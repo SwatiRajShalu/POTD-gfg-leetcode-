@@ -1,0 +1,21 @@
+class Solution {
+  public:
+    string oddEven(string s) {
+       unordered_map <char, int> mp;
+       int sum=0;
+       for(auto it:s){
+          mp[it]++; 
+       }
+
+       for(auto  it: mp){
+           if((int(it.first)-96)%2==0 && it.second%2==0){
+               sum++;
+           }else if((int(it.first)-96)%2==1 && it.second%2==1){
+               sum++;
+           }
+       }
+       if(sum%2==0) return "EVEN";
+       else return "ODD";
+       
+    }
+};
