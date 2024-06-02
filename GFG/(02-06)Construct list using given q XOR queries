@@ -1,0 +1,58 @@
+// initally my list :    s={0}
+// if i get  query {0,x}  , then add x to the list .....such like....s={0,x}
+// if i get query  {1,y}  , then xor each element of the list by y and update the elements with its new value
+//this is giving tle
+/*
+    void convert(vector<int> &list_ans,int no){
+        for(auto &it:list_ans){
+            it=it^no;
+        }
+    }
+    vector<int> constructList(int q, vector<vector<int>> &queries) {
+        
+        vector<int> list_ans;list_ans.push_back(0);
+        
+        for(auto it : queries){
+            if(it[0]==0){
+                list_ans.push_back(it[1]);
+            }
+            else if(it[0]==1){
+                convert(list_ans,it[1]);
+            }
+        }
+        sort(list_ans.begin(),list_ans.end());
+        return list_ans;
+    }
+*/
+------------------------------------------------------------------------------------------------------------------------------------------
+
+//now next solution: 
+/*2 array banaya hai ... ekk hai list_ans aur ekk hai temp
+ham back se trace karenge aur agar 1 aya to xor kar denge aur agar 0 aya to list_ans me wo element and temp me xor element add kar denge
+fir dono array ke elements ko bari bari se xor kar denge*/
+
+    vector<int> constructList(int q, vector<vector<int>> &queries) {
+        
+        int var=0;
+        vector<int> list_ans;
+        vector<int> temp;
+        
+        for(int i=q-1;i>=0;i--){
+            if(queries[i][0]==1){
+                var=var^queries[i][1];
+            }else{
+                list_ans.push_back(queries[i][1]);
+                temp.push_back(var);
+            }
+        }
+        
+        for(int i=0;i<list_ans.size();i++){
+            list_ans[i]=list_ans[i]^temp[i];
+        }
+        list_ans.push_back(0^var);
+
+        sort(list_ans.begin(),list_ans.end());
+        
+        return list_ans;
+    }
+ 
