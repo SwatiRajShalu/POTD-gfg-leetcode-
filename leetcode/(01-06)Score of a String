@@ -8,5 +8,4 @@ public:
         return sum_ans;
     }
 };
-
 //to get the ascii values we do int(ch) typecast to integer
