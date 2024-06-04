@@ -1,7 +1,8 @@
 // initally my list :    s={0}
 // if i get  query {0,x}  , then add x to the list .....such like....s={0,x}
 // if i get query  {1,y}  , then xor each element of the list by y and update the elements with its new value
-//this is giving tle
+
+//---------------------------------------------------------------------------SOLUTION 1---------------------------------------------this is giving tle
 
 /*
     void convert(vector<int> &list_ans,int no){
