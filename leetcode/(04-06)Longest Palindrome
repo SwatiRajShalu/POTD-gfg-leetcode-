@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        unordered_map<char,int> mp;
+        for(auto it: s){
+            mp[it]++;
+        }
+
+        int count=0;
+
+        for(auto it:mp){
+            if(it.second%2==0)
+            count+=it.second;
+            else if (it.second>2){ //it.second should not be 1
+                count+=(it.second/2)*2;
+            }
+        }
+
+        if(count!=s.size()) //it shows the left ones have frequency 1 and one of them could be taken to form a plaindrome.
+        return count+1;
+        else return count;
+    }
+};
