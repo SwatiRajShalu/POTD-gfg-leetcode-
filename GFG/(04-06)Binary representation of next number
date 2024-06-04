@@ -26,7 +26,6 @@ class Solution {
      it stands for size type
      used to specify the length of strings
 
-
     now next is .find_first_not_of('0') ,this function has two parameters :('0',index)
     this function will return the value in integer form the index of the element which mismatched the '0'
 
