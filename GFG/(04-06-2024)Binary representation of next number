@@ -1,0 +1,33 @@
+class Solution {
+  public: 
+    string binaryNextNumber(string s) {
+        
+        int index=s.size()-1;
+        
+        while(index>=0 && s[index]=='1'){
+           s[index]='0';
+           index--;
+        }
+        if(index==-1){
+            s="1"+s;
+            return s;
+        }
+        s[index]='1';
+        
+        size_t first_non_zero = s.find_first_not_of('0');
+
+        return s.substr(first_non_zero);
+    }
+};
+
+
+/*   size_t is a data type in c, c++
+     it is not a built in data type
+     it stands for size type
+     used to specify the length of strings
+
+
+    now next is .find_first_not_of('0') ,this function has two parameters :('0',index)
+    this function will return the value in integer form the index of the element which mismatched the '0'
+
+    now substr() , this function has two parameters : substr(x,y) means from index 'x' , total no of elements  'y' to be stored into the new string */
