@@ -1,0 +1,48 @@
+//---------------------------------------------------------------SOLUTION 1---------------------------giving tle-------586/1115 testcse------------------------------
+class Solution {
+  public:
+    void shift(int a[],int n){
+        int first=a[0];
+        for(int i=1;i<n;i++){
+           a[i-1]=a[i]; 
+        }
+        a[n-1]=first;
+    }
+    long long max_sum(int a[], int n) {
+        
+        long long max_sum_ans=0;
+        
+        int j=n;
+        while(j--){
+            long long sum=0;
+            for(int i=0;i<n;i++){
+                sum+=(a[i]*i);
+            }
+            max_sum_ans=max(max_sum_ans,sum);
+            shift(a,n);
+        }
+        
+        return max_sum_ans;
+    }
+};
+
+//--------------------------------------------------------------------SOLUTION 2------------------------------------------------------------------
+class Solution {
+  public:
+    long long max_sum(int a[], int n) {
+        
+        long long  sum=0,sum_curr=0;
+        for(long long  i=0;i<n;i++) {sum+=a[i]; sum_curr+=(a[i]*i);}
+        
+        long long  max_sum_forward=s0;
+        for(long long  i=1;i<n;i++){
+            long long  sum_forward=sum_curr+sum-(long long)n*((long long)a[n-i]);
+            max_sum_forward=max(max_sum_forward,sum_forward);
+            sum_curr=sum_forward;
+        }
+        
+        return max_sum_forward;
+    }
+};
+
+//isme kya karna hai ...pehle ham overalll sum lenge , fir s0 ka sum nikalenge then abb ham chahte hai counterclockwise answer aye , to sum_farward=sum_curr+sum-n*a[n-i]
