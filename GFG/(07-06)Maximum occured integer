@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------PREFIX SUM SOLUTION----------------------------------------------------
+
+int maxOccured(int n, int l[], int r[], int maxx) {
+
+       vector<int> arr(maxx+2,0);
+       
+       for(int i=0;i<n;i++){
+           arr[l[i]]+=1;
+           arr[r[i]+1]-=1;
+       }
+       
+       int value=-1,ans=-1,prefix_sum=0;
+       for(int i=0;i<maxx+2;i++){
+           prefix_sum+=arr[i];
+           if(value<prefix_sum){
+               value=prefix_sum;
+               ans=i;
+           }
+       }
+       
+       return ans;
+    }
