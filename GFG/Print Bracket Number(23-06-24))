@@ -1,0 +1,24 @@
+------------------------------link: https://www.geeksforgeeks.org/problems/print-bracket-number4058/1 --------------------------
+class Solution {
+  public:
+
+    vector<int> bracketNumbers(string str) {
+        
+        stack<int> st;
+        int count=0; //----- for encountering the number of different pairs of bracket-------------------
+        vector<int> ans;
+        
+        for(auto it: str){
+            if(it=='('){
+                count++;
+                st.push(count);
+                ans.push_back(count);
+            }else if(it==')'){
+                ans.push_back(st.top());
+                st.pop();
+            }
+        }
+        
+        return ans;
+    }
+};
